@@ -8,12 +8,16 @@ public class Main {
 
         while (true) {
 
+            //Menu
+
             System.out.println("1-SignIn\n2-SignUp\n3-logout");
             int InputLoginMenu = scanner.nextInt();
             String LineConsumer = scanner.nextLine();
 
             if(InputLoginMenu == 1)
             {
+                //Sign In Menu
+
                 System.out.print("\033[H\033[2J");
                 System.out.println("Give input with this format\nYourusername Password");
                 String Input = scanner.nextLine();
@@ -23,6 +27,9 @@ public class Main {
                 if (IsUserExists) 
                 {
                     while(true){
+
+                        //Mechanism Menu
+
                         System.out.print("\033[H\033[2J");
                         System.out.println("Success!\n1-For Platform\n2-For Recipe Searcher\n3-Go back to Menu");
                         int MechanismInput = scanner.nextInt();
@@ -34,6 +41,8 @@ public class Main {
                         }
                         else if(MechanismInput == 2)
                         {
+                            //API Call On CHATGPT
+
                             System.out.print("\033[H\033[2J");
                             System.out.println("What you have in the Fridge?");
                             String SecondMechanismInput = scanner.nextLine();
@@ -56,6 +65,8 @@ public class Main {
             }
             else if(InputLoginMenu == 2)
             {
+                //Sign Up Menu
+
                 System.out.println("Give input with this format\nYourusername Password Description");
                 String Input = scanner.nextLine();
                 String[] SplitedInput = Input.split(" ");
@@ -73,6 +84,8 @@ public class Main {
             }
             else if (InputLoginMenu == 3) 
             {
+                //Log out
+
                 System.out.println("Succesfully Loged Out!");
                 break;
             }
@@ -83,6 +96,8 @@ public class Main {
 
         }
     }
+
+    //Check If UserExists (For Sign In Menu)
     public static boolean UserExists(String username, String password, ArrayList<User> Users) 
     {
         for (User user : Users) 
