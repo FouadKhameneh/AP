@@ -68,4 +68,9 @@ public class User {
     public void setRecipes(ArrayList<Recipe> recipes) {
         this.recipes = recipes;
     }
+    
+    //Other Methods
+    public void addContent(Content content) {
+        contents.add(content);
+    }
 }

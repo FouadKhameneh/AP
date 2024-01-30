@@ -46,14 +46,34 @@ public class Main {
     
                                 if (PlatformInput == 1) 
                                 {
+                                    System.out.println(CurrentUser.getContents());
                                     
                                 }
                                 else if(PlatformInput == 2)
                                 {
+                                    for (User user : Users) {
+                                        System.out.println(user.getContents());
+                                    }
     
                                 }
                                 else if(PlatformInput == 3)
                                 {
+                                    System.out.println("Give Input With this format\nPictureAddress Description");
+                                    Input = scanner.nextLine();
+                                    String[] SplitedInputPlatform = Input.split(" ");
+
+                                    System.out.println("What you Used for Making This food? Format Shoud be like this\n food1 food2");
+                                    Input = scanner.nextLine();
+                                    String[] SplitedInputPlatform2 = Input.split(" ");
+
+                                    System.out.println("And How you Did that?");
+                                    Input = scanner.nextLine();
+
+                                    Recipe CurrentRecipe = new Recipe(CurrentUser.getContents().size(),SplitedInputPlatform2,Input);
+                                    Content CurrentContent = new Content(CurrentUser.getContents().size(), SplitedInputPlatform[0], SplitedInputPlatform[1], CurrentUser, CurrentRecipe);
+                                    
+                                    CurrentUser.addContent(CurrentContent);
+                                    Users.set(CurrentUser.getId(), CurrentUser);
     
                                 }
                                 else if(PlatformInput == 4)

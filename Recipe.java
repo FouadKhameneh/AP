@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class Recipe {
     
     private int id;
-    private ArrayList<String> Resources;
+    private String [] Resources;
     private String description;
 
     // Constructor
-    public Recipe(int id, ArrayList<String> Resources, String description) {
+    public Recipe(int id, String [] Resources, String description) {
         this.id = id;
         this.Resources = Resources;
         this.description = description;
@@ -18,7 +18,7 @@ public class Recipe {
         return id;
     }
 
-    public ArrayList<String> getResources() {
+    public String [] getResources() {
         return Resources;
     }
 
@@ -31,7 +31,7 @@ public class Recipe {
         this.id = id;
     }
 
-    public void setResources(ArrayList<String> Resources) {
+    public void setResources(String [] Resources) {
         this.Resources = Resources;
     }
 
