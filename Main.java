@@ -26,17 +26,49 @@ public class Main {
                 Boolean IsUserExists = UserExists(SplitedInput[0], SplitedInput[1], Users);
                 if (IsUserExists) 
                 {
+                    User CurrentUser = FindUser(SplitedInput[0], SplitedInput[1], Users);
+
                     while(true){
 
                         //Mechanism Menu
 
                         System.out.print("\033[H\033[2J");
-                        System.out.println("Success!\n1-For Platform\n2-For Recipe Searcher\n3-Go back to Menu");
+                        System.out.println("1-For Platform\n2-For Recipe Searcher\n3-Go back to Menu");
                         int MechanismInput = scanner.nextInt();
                         LineConsumer = scanner.nextLine();
 
                         if(MechanismInput == 1)
                         {
+                            while (true) {
+                                System.out.println("1-To Get All of your Contents\n2-To Get All Contents\n3-Create Content\n4-Edit Content\n5-Delete Content\n6-Go back");
+                                int PlatformInput = scanner.nextInt();
+                                LineConsumer = scanner.nextLine();
+    
+                                if (PlatformInput == 1) 
+                                {
+                                    
+                                }
+                                else if(PlatformInput == 2)
+                                {
+    
+                                }
+                                else if(PlatformInput == 3)
+                                {
+    
+                                }
+                                else if(PlatformInput == 4)
+                                {
+    
+                                }
+                                else if(PlatformInput == 5)
+                                {
+    
+                                }
+                                else if(PlatformInput == 6)
+                                {
+                                    break;
+                                }
+                            }
 
                         }
                         else if(MechanismInput == 2)
@@ -48,6 +80,7 @@ public class Main {
                             String SecondMechanismInput = scanner.nextLine();
                             ChatGPTAPIExample temp = new ChatGPTAPIExample();
                             String SecondMechanismOutput = temp.APICall(SecondMechanismInput);
+                            System.out.println(SecondMechanismOutput);
                         }
                         else if (MechanismInput == 3) 
                         {
@@ -108,6 +141,18 @@ public class Main {
             }
         }
         return false;
+    }
+
+    public static User FindUser(String username, String password, ArrayList<User> Users) 
+    {
+        for (User user : Users) 
+        {
+            if (user.getUserName().equals(username) && user.getPassword().equals(password)) 
+            {
+                return user;
+            }
+        }
+        return null;
     }
 
 }
