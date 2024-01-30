@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
@@ -46,15 +47,17 @@ public class Main {
     
                                 if (PlatformInput == 1) 
                                 {
-                                    System.out.println(CurrentUser.getContents());
-                                    
+                                    for (Content content : CurrentUser.getContents()) {
+                                        System.out.println(content.getId() + " " + content.getPictureAddress() + " " + content.getDescription() + " " + content.getContentOwner().getUserName() + " " + content.getContentRecipe().getId());
+                                    }
                                 }
                                 else if(PlatformInput == 2)
                                 {
                                     for (User user : Users) {
-                                        System.out.println(user.getContents());
+                                        for (Content content : user.getContents()) {
+                                            System.out.println(content.getId() + " " + content.getPictureAddress() + " " + content.getDescription() + " " + content.getContentOwner().getUserName() + " " + content.getContentRecipe().getId());
+                                        }
                                     }
-    
                                 }
                                 else if(PlatformInput == 3)
                                 {
@@ -62,7 +65,7 @@ public class Main {
                                     Input = scanner.nextLine();
                                     String[] SplitedInputPlatform = Input.split(" ");
 
-                                    System.out.println("What you Used for Making This food? Format Shoud be like this\n food1 food2");
+                                    System.out.println("What you Used for Making This food? Format Shoud be like this\nfood1 food2");
                                     Input = scanner.nextLine();
                                     String[] SplitedInputPlatform2 = Input.split(" ");
 
@@ -78,7 +81,27 @@ public class Main {
                                 }
                                 else if(PlatformInput == 4)
                                 {
-    
+                                    System.out.println("Give Id of Content You want to delete");
+                                    int IdOfContentToDelete = scanner.nextInt();
+                                    LineConsumer = scanner.nextLine();
+
+                                    System.out.println("Give Input With this format\nPictureAddress Description");
+                                    Input = scanner.nextLine();
+                                    String[] SplitedInputPlatform = Input.split(" ");
+
+                                    System.out.println("What you Used for Making This food? Format Shoud be like this\n food1 food2");
+                                    Input = scanner.nextLine();
+                                    String[] SplitedInputPlatform2 = Input.split(" ");
+
+                                    System.out.println("And How you Did that?");
+                                    Input = scanner.nextLine();
+
+                                    Recipe CurrentRecipe = new Recipe(CurrentUser.getContents().size(),SplitedInputPlatform2,Input);
+                                    Content CurrentContent = new Content(CurrentUser.getContents().size(), SplitedInputPlatform[0], SplitedInputPlatform[1], CurrentUser, CurrentRecipe);
+                                    
+                                    CurrentUser.getContents().set(IdOfContentToDelete, CurrentContent);
+                                    Users.set(CurrentUser.getId(), CurrentUser);
+
                                 }
                                 else if(PlatformInput == 5)
                                 {
@@ -113,7 +136,7 @@ public class Main {
                     }
                 }
                 else{
-                    System.out.println("This User Doesn't exist");
+                    System.out.println("This User Doesn't exist or Wrong Password");
                 }
             }
             else if(InputLoginMenu == 2)
@@ -123,7 +146,8 @@ public class Main {
                 System.out.println("Give input with this format\nYourusername Password Description");
                 String Input = scanner.nextLine();
                 String[] SplitedInput = Input.split(" ");
-                if (SplitedInput.length == 3) 
+                
+                if (SplitedInput.length == 3 && !UserNameExists(SplitedInput[0], Users)) 
                 {
                     User newUser = new User(SplitedInput[0], Users.size(), SplitedInput[1], SplitedInput[2]);
                     Users.add(newUser);
@@ -131,7 +155,7 @@ public class Main {
                 }
                 else
                 {
-                    System.out.println("Undefined Input");
+                    System.out.println("Undefined Input Or User Exists");
                 }
 
             }
@@ -163,6 +187,20 @@ public class Main {
         return false;
     }
 
+    //Check If UserNameExists (For Sign Up Menu)
+    public static boolean UserNameExists(String username, ArrayList<User> Users) 
+    {
+        for (User user : Users) 
+        {
+            if (user.getUserName().equals(username)) 
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Return User which is going to be CurrentUser (For Mechanism Menu)
     public static User FindUser(String username, String password, ArrayList<User> Users) 
     {
         for (User user : Users) 
