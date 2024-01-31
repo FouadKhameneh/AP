@@ -81,8 +81,8 @@ public class Main {
                                 }
                                 else if(PlatformInput == 4)
                                 {
-                                    System.out.println("Give Id of Content You want to delete");
-                                    int IdOfContentToDelete = scanner.nextInt();
+                                    System.out.println("Give Id of Content You want to Edit");
+                                    int IdOfContentToEdit = scanner.nextInt();
                                     LineConsumer = scanner.nextLine();
 
                                     System.out.println("Give Input With this format\nPictureAddress Description");
@@ -99,13 +99,22 @@ public class Main {
                                     Recipe CurrentRecipe = new Recipe(CurrentUser.getContents().size(),SplitedInputPlatform2,Input);
                                     Content CurrentContent = new Content(CurrentUser.getContents().size(), SplitedInputPlatform[0], SplitedInputPlatform[1], CurrentUser, CurrentRecipe);
                                     
-                                    CurrentUser.getContents().set(IdOfContentToDelete, CurrentContent);
+                                    CurrentUser.getContents().set(IdOfContentToEdit, CurrentContent);
                                     Users.set(CurrentUser.getId(), CurrentUser);
 
                                 }
                                 else if(PlatformInput == 5)
                                 {
+                                    System.out.println("Give Id of Content You want to Delete");
+                                    int IdOfContentToDelete = scanner.nextInt();
+                                    LineConsumer = scanner.nextLine();
+
+                                    CurrentUser.getContents().get(IdOfContentToDelete).setContentOwner(null);
+                                    CurrentUser.getContents().get(IdOfContentToDelete).setContentRecipe(null);
+                                    CurrentUser.getContents().get(IdOfContentToDelete).setDescription(null);
+                                    CurrentUser.getContents().get(IdOfContentToDelete).setPictureAddress(null);
     
+                                    Users.set(CurrentUser.getId(), CurrentUser);
                                 }
                                 else if(PlatformInput == 6)
                                 {
