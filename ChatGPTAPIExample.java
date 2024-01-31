@@ -18,7 +18,7 @@ public class ChatGPTAPIExample {
             connection.setRequestProperty("Content-Type", "application/json");
 
             // Set the Authorization header with your API key
-            connection.setRequestProperty("Authorization", "Bearer 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");
+            connection.setRequestProperty("Authorization", "Bearer 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");
 
             // Enable output and input streams
             connection.setDoOutput(true);
@@ -58,7 +58,7 @@ public class ChatGPTAPIExample {
 
 /*curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer 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 \
+  -H "Authorization: Bearer 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 \
   -d '{
     "model": "gpt-3.5-turbo",
     "messages": [

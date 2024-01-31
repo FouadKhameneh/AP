@@ -47,7 +47,7 @@ public class Main {
                                 if (PlatformInput == 1) 
                                 {
                                     for (Content content : CurrentUser.getContents()) {
-                                        System.out.println("Content Id of: " + content.getId() + "Picture Address of: " + content.getPictureAddress() + "Description Of: " + content.getDescription() + "Owner of Content: " + content.getContentOwner().getUserName() + "Id of Content: " + content.getContentRecipe().getId());
+                                        System.out.println(" Content Id of: " + content.getId() + " Picture Address of: " + content.getPictureAddress() + " Description Of: " + content.getDescription() + " Owner of Content: " + content.getContentOwner() + " Id of Content: " + content.getContentRecipe());
                                     }
                                 }
                                 else if(PlatformInput == 2)
