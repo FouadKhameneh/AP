@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,7 +47,7 @@ public class Main {
                                 if (PlatformInput == 1) 
                                 {
                                     for (Content content : CurrentUser.getContents()) {
-                                        System.out.println(content.getId() + " " + content.getPictureAddress() + " " + content.getDescription() + " " + content.getContentOwner().getUserName() + " " + content.getContentRecipe().getId());
+                                        System.out.println("Content Id of: " + content.getId() + "Picture Address of: " + content.getPictureAddress() + "Description Of: " + content.getDescription() + "Owner of Content: " + content.getContentOwner().getUserName() + "Id of Content: " + content.getContentRecipe().getId());
                                     }
                                 }
                                 else if(PlatformInput == 2)
@@ -89,7 +88,7 @@ public class Main {
                                     Input = scanner.nextLine();
                                     String[] SplitedInputPlatform = Input.split(" ");
 
-                                    System.out.println("What you Used for Making This food? Format Shoud be like this\n food1 food2");
+                                    System.out.println("What you Used for Making This food? Format Shoud be like this\nfood1 food2");
                                     Input = scanner.nextLine();
                                     String[] SplitedInputPlatform2 = Input.split(" ");
 
